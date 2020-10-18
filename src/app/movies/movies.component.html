@@ -1,0 +1,20 @@
+<h1>Popular Movies</h1>
+<div class="row">
+  <div class="col-lg-2" *ngFor="let movie of popularMovies">
+    <app-movie [movie]="movie"></app-movie>
+  </div>
+</div>
+
+<h1>In Theaters</h1>
+<div class="row">
+  <div class="col-lg-2" *ngFor="let movie of inTheaterMovies; let i = index">
+    <app-movie [movie]="movie" (idBtnEmitter)="btnIdClick($event)"></app-movie>
+  </div>
+</div>
+
+<div class="row" *ngIf="massage">
+  <div class="col-lg-4"></div>
+  <div class="col-lg-4">
+      <h1>{{ massage }}</h1></div>
+  <div class="col-lg-4"></div>
+</div>

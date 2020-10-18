@@ -2,15 +2,28 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { LandingComponent } from './landing/landing.component';
+import { HttpClientModule } from '@angular/common/http';
+import { MoviesComponent } from './movies/movies.component';
+import { MovieService } from './services/movie.service';
+import { MovieComponent } from './movie/movie.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    LandingComponent,
+    MoviesComponent,
+    MovieComponent,
+    FooterComponent
   ],
   imports: [
-    BrowserModule
-  ],
-  providers: [],
+    BrowserModule,
+    HttpClientModule
+      ],
+  providers: [MovieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

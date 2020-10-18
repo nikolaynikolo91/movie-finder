@@ -1,0 +1,17 @@
+<div class="card mb-3">
+  <img
+    style="height: 200px; width: 100%; display: block"
+    [src]= "imageSrc"
+    alt="Card image"
+  />
+  <div class="card-body">
+   <h5> {{ movie.title }}</h5>
+    <p class="card-text">
+      {{ movie.release_date }}
+    </p>
+  </div>
+
+  <div class="card-footer text-muted">
+    <button class="btn btn-primary" [id]="movie.id" (click)="btnIsClick()">View details</button>
+  </div>
+</div>
