@@ -10,12 +10,17 @@ import { MovieService } from '../services/movie.service';
 })
 export class LandingComponent implements OnInit {
   movieSearch$: Observable<Movie[]>;
-  constructor(private movieService: MovieService) {}
+  searchMovie: Movie[];
+  constructor(private movieService: MovieService,) {}
 
   ngOnInit(): void {}
 
   search(value): void {
-   // console.log(value.Search);
+    // console.log(value.Search);
     this.movieSearch$ = this.movieService.searchMovie(value.Search);
+    this.movieSearch$.subscribe((data) => {
+      this.searchMovie = data;
+      console.log(data);
+    });
   }
 }

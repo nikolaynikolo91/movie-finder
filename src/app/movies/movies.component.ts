@@ -1,6 +1,7 @@
-import { Component, EventEmitter, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../services/movie.service';
 import Movie from '../models/Movie';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-movies',
@@ -10,7 +11,9 @@ import Movie from '../models/Movie';
 export class MoviesComponent implements OnInit {
   popularMovies: Array<Movie>;
   inTheaterMovies: Array<Movie>;
-  massage: any = null;
+  kidsFavoritesMovies: Array<Movie>;
+  dramaMovies: Observable<Movie[]>;
+  bestDramaMovies$: Observable<Movie[]>;
 
   constructor(private moviesService: MovieService) {}
 
@@ -18,12 +21,19 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getPopularMovies().subscribe((data) => {
       this.popularMovies = data['results'].slice(0, 6);
     });
-    this.moviesService.getPopularMovies().subscribe((data) => {
-      this.inTheaterMovies = data['results'].slice(6, 12);
+    this.moviesService.getInTheatersMovies().subscribe((data) => {
+      this.inTheaterMovies = data;
     });
+    this.moviesService
+      .getPopularKidsMovie()
+      .subscribe(
+        (data) => (this.kidsFavoritesMovies = data['results'].slice(0, 6))
+      );
+    this.dramaMovies = this.moviesService.getDrama();
+    this.bestDramaMovies$ = this.moviesService.getBestDrama();
   }
 
-  btnIdClick(event): void{
-    this.massage = 'id: ' + event;
+  btnIdClick(event): void {
+    console.log(event);
   }
 }

@@ -12,9 +12,23 @@
   </div>
 </div>
 
-<div class="row" *ngIf="massage">
-  <div class="col-lg-4"></div>
-  <div class="col-lg-4">
-      <h1>{{ massage }}</h1></div>
-  <div class="col-lg-4"></div>
+
+<h1>Kids Favorites</h1>
+<div class="row">
+  <div class="col-lg-2" *ngFor="let movie of kidsFavoritesMovies">
+    <app-movie [movie]="movie"></app-movie>
+  </div>
 </div>
+<h1>Drama</h1>
+  <div class="row">
+    <div class="col-lg-2" *ngFor="let movie of dramaMovies | async">
+      <app-movie [movie]="movie"></app-movie>
+    </div>
+  </div>
+<h1>Best Drama</h1>
+  <div class="row">
+    <div class="col-lg-2" *ngFor="let movie of bestDramaMovies$ | async">
+      <app-movie [movie]="movie"  (idBtnEmitter)="btnIdClick($event)"></app-movie>
+    </div>
+  </div>
+
