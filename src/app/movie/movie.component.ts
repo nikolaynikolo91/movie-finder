@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import Movie from '../models/Movie';
 
 @Component({
@@ -15,13 +16,14 @@ export class MovieComponent implements OnInit {
   @Output()
   idBtnEmitter: EventEmitter<any> = new EventEmitter();
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.imageSrc = this.path + this.movie.poster_path;
+    // this.router.parseUrl('' + this.movie.id);
   }
 
   btnIsClick(): void {
-    this.idBtnEmitter.emit(this.movie.id);
+    //  this.idBtnEmitter.emit(this.movie.id);
   }
 }

@@ -12,6 +12,7 @@ import { MovieService } from './services/movie.service';
 import { MovieComponent } from './movie/movie.component';
 import { FooterComponent } from './footer/footer.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     MovieComponent,
     FooterComponent,
     MovieDetailsComponent,
+    AboutComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [MovieService],
